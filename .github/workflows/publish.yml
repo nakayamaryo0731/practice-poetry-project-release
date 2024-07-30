@@ -22,10 +22,13 @@ jobs:
     - name: Install dependencies
       run: poetry install
 
-    - name: Configure GitHub Packages
-      run: |
-        poetry config repositories.github https://maven.pkg.github.com/${{ github.repository }}
-        poetry config http-basic.github ${{ github.actor }} ${{ secrets.PAT }}
+    # - name: Configure GitHub Packages
+    #   run: |
+    #     poetry config repositories.github https://maven.pkg.github.com/${{ github.repository }}
+    #     poetry config http-basic.github ${{ github.actor }} ${{ secrets.PAT }}
 
     - name: Publish to GitHub Packages
-      run: poetry publish --repository github --build
+      env:
+        POETRY_HTTP_BASIC_GITHUB_USERNAME: ${{ github.actor }}
+        POETRY_HTTP_BASIC_GITHUB_PASSWORD: ${{ secrets.PAT }}
+      run: poetry publish -r github
