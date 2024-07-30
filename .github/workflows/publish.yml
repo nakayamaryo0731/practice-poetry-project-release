@@ -1,0 +1,31 @@
+name: Publish Package
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+
+    - name: Install Poetry
+      run: curl -sSL https://install.python-poetry.org | python3 -
+
+    - name: Install dependencies
+      run: poetry install
+
+    - name: Configure GitHub Packages
+      run: |
+        poetry config repositories.github https://maven.pkg.github.com/${{ github.repository }}
+        poetry config http-basic.github ${{ github.actor }} ${{ secrets.PAT }}
+
+    - name: Publish to GitHub Packages
+      run: poetry publish --repository github --build
