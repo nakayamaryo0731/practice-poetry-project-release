@@ -31,4 +31,4 @@ jobs:
       env:
         POETRY_HTTP_BASIC_GITHUB_USERNAME: ${{ github.actor }}
         POETRY_HTTP_BASIC_GITHUB_PASSWORD: ${{ secrets.PAT }}
-      run: poetry publish -r github
+      run: poetry publish -r github --build
