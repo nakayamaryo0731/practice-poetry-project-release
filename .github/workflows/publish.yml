@@ -20,6 +20,8 @@ jobs:
         pip install poetry poetry-dynamic-versioning twine
         poetry install
 
-    - name: Build and Publish
-      run: |
-        poetry publish --build --username nakayamaron0731 --password Nakayamaron@0731
+    - name: Publish to PyPI
+      env:
+        TWINE_USERNAME: '__token__'
+        TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+      run: poetry publish --username $TWINE_USERNAME --password $TWINE_PASSWORD
