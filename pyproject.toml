@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "practice-poetry-project-release"
-version = "0.1.0"
+version = "0.0.0"
 description = ""
 authors = ["nakayamaryo0731 <ryo_nakayama@caddi.jp>"]
 readme = "README.md"
@@ -14,3 +14,7 @@ flask-cors = "^4.0.1"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry-dynamic-versioning]
+enable = true
+style = "pep440"
