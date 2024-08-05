@@ -1,24 +1,12 @@
 # practice-poetry-project-release
 
-### Prerequisites (Windows)
-Recommended to install with the following steps.
-- Python 3.10.x, 3.11.x or 3.12.x (binary distribution of [python.org](https://www.python.org/))
-- Poetry Installtion to global
-```
-> pip install poetry
-```
+## Overview
+This is the repository for Poetry project releases and package management PoCs.
 
-### Install alib dependencies
-At the root directory,
-```
-$ poetry install
-```
-If it takes long time to finish poetry install, please try to set PYTHON_KEYRING_BACKEND as below.
-```
-$ PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring poetry install
-```
+## How to release and publish package
+We use [poetry-dynamic-versioning](https://github.com/mtkennerly/poetry-dynamic-versioning) for generate package version from git release version tag.
 
-## Enter virtual env. created by poetry
-```sh
-$ poetry shell
-```
+We have implemented a [github actions workflow](./.github/workflows/publish.yml) that triggers a git release to publish the package.
+
+## Where to publish
+PyPI: https://pypi.org/project/practice-poetry-project-release/
