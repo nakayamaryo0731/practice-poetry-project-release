@@ -10,5 +10,3 @@ We have implemented a [github actions workflow](./.github/workflows/publish.yml)
 
 ## Where to publish
 PyPI: https://pypi.org/project/practice-poetry-project-release/
-
-test
