@@ -22,6 +22,8 @@ jobs:
                 fi
     build:
         runs-on: ubuntu-latest
+        needs:
+            - validate-version-input
 
         steps:
         - uses: actions/checkout@v3
