@@ -36,6 +36,11 @@ jobs:
             pip install poetry poetry-dynamic-versioning twine
             poetry install
 
+        - name: Set version
+          run: |
+            NEW_VERSION=${{ github.event.inputs.release_version }}
+            poetry version ${NEW_VERSION/v/}
+
         - name: Build
           run: poetry build
         
